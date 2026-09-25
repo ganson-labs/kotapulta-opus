@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Котапульта — звуковая лаборатория</title>
+<style>
+  :root {
+    --bg: #fbf6ec; --card: #fffdf8; --ink: #3b2f2a; --muted: #8a7b70; --line: #eadfcd;
+    --accent: #f08a3c; --accent2: #6aa7c8; --warm: #e9695a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-serif;
+    background-image: repeating-linear-gradient(transparent 0 27px, #e8eef5 27px 28px);
+  }
+  header {
+    position: sticky; top: 0; z-index: 2; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    padding: 12px 16px; background: rgba(251, 246, 236, .94); border-bottom: 1px solid var(--line);
+  }
+  h1 { font-size: 20px; margin: 0; }
+  #status { color: var(--muted); font-size: 13px; }
+  #app { max-width: 980px; margin: 0 auto; padding: 12px 16px 40px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 12px 0; box-shadow: 0 2px 0 var(--line); }
+  .card h2 { font-size: 16px; margin: 0 0 6px; }
+  .card h2:empty { display: none; }
+  .hint { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
+  .hint:empty { display: none; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button {
+    font: inherit; padding: 7px 12px; border-radius: 10px; border: 1px solid #d9c9b2; background: #fff;
+    color: var(--ink); cursor: pointer; box-shadow: 0 2px 0 #e3d5c1; transition: transform .06s;
+  }
+  button:hover { border-color: var(--accent); }
+  button:active { transform: translateY(2px); box-shadow: none; }
+  button.music { background: #eef6fb; border-color: #b9d6e6; }
+  button.warm { background: #fff1e8; border-color: #f2c3a4; }
+  #mute { background: var(--accent); color: #fff; border-color: #d97326; }
+  .sl { display: flex; align-items: center; gap: 6px; }
+  .val { min-width: 34px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pad {
+    --p: 0; width: 240px; height: 110px; border-radius: 14px; display: grid; place-items: center; user-select: none;
+    touch-action: none; cursor: grab; border: 2px dashed #d9c9b2; color: var(--muted);
+    background: linear-gradient(90deg, rgba(240, 138, 60, .35) calc(var(--p) * 100%), transparent 0);
+  }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--card); }
+  th, td { border: 1px solid var(--line); padding: 4px 6px; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  tr.bad td { background: #ffe3e0; }
+  @media (max-width: 600px) { .pad { width: 100%; } header { position: static; } h1 { font-size: 17px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>🐱 Котапульта — звуковая лаборатория</h1>
+  <button id="mute">🔊 звук вкл</button>
+  <span id="status">нажмите любую кнопку, чтобы включить звук</span>
+</header>
+<main id="app"></main>
+<!-- Пересборка после правок src/audio.js: node tools/audio-lab/build.mjs -->
+<script src="audio-lab/lab.bundle.js"></script>
+</body>
+</html>

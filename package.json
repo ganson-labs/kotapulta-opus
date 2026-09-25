@@ -1,0 +1,23 @@
+{
+  "name": "kotapulta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Котапульта — физическая игра про котов, коробки и спящего соню",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/build.mjs --watch",
+    "test": "node tools/test-levels.mjs",
+    "start": "play.cmd"
+  },
+  "dependencies": {
+    "planck": "1.5.0",
+    "roughjs": "4.6.6"
+  },
+  "devDependencies": {
+    "@fontsource-variable/rubik": "5.3.0",
+    "@fontsource/caveat": "5.3.0",
+    "esbuild": "0.28.2",
+    "puppeteer-core": "25.12.0"
+  },
+  "type": "module"
+}
